@@ -1,5 +1,6 @@
 import Navbar from "@components/Navbar";
 import "@styles/globals.css";
+import Provider from "@components/Provider";
 
 export const metadata = {
   title: "Prompter",
@@ -10,13 +11,15 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="main">
-          <div className="gradient" />
-        </div>
-        <main className="app">
-          <Navbar />
-          {children}
-        </main>
+        <Provider>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+          <main className="app">
+            <Navbar />
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
