@@ -1,3 +1,4 @@
+import Navbar from "@components/Navbar";
 import "@styles/globals.css";
 
 export const metadata = {
@@ -8,11 +9,14 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <div className="main">
           <div className="gradient" />
         </div>
-        <main className="app">{children}</main>
+        <main className="app">
+          <Navbar />
+          {children}
+        </main>
       </body>
     </html>
   );
