@@ -62,7 +62,7 @@
   height: 100%;
   filter: blur(100px) saturate(150%);
   top: 80px;
-  opacity: 0.15;
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 640px) {
@@ -78,7 +78,7 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-transparent hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
