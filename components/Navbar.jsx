@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-import { getProviders, signIn, useSession } from "next-auth/react";
+import { getProviders, signIn, useSession, signOut } from "next-auth/react";
 
 // useEffect;
 const Navbar = () => {
@@ -30,8 +30,8 @@ const Navbar = () => {
         <Image
           src="/assets/images/logo.svg"
           alt="main-logo"
-          width={35}
-          height={35}
+          width={40}
+          height={40}
           className="object-contain"
         />
         <p className="logo_text">Prompter</p>
@@ -43,13 +43,15 @@ const Navbar = () => {
             <Link href="/createPrompt" className="black_btn">
               Create Post
             </Link>
-            <button className="outline_btn">Signout</button>
+            <button className="outline_btn" onClick={() => signOut()}>
+              Signout
+            </button>
             <Link href="/profile">
               <Image
                 src={session?.user?.image}
                 alt="user-profile"
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 className="object-contain rounded-full shadow-md"
               />
             </Link>
@@ -85,13 +87,15 @@ const Navbar = () => {
                 <Link href="/createPrompt" className="black_btn">
                   Create Post
                 </Link>
-                <button className="outline_btn">Signout</button>
+                <button className="outline_btn" onClick={() => signOut()}>
+                  Signout
+                </button>
                 <Link href="/profile">
                   <Image
                     src={session?.user?.image}
                     alt="user-profile"
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     className="object-contain rounded-full shadow-md"
                   />
                 </Link>

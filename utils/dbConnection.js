@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 let isConnected = false;
 
 export const connectdb = async () => {
-  mongoose.set("strictQuery", true);
   if (isConnected) {
     console.log("Already connected to db !");
     return;
@@ -11,7 +10,7 @@ export const connectdb = async () => {
 
   try {
     await mongoose.connect(process.env.DB_CONNECTION, {
-      useNewUrlParse: true,
+      useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     isConnected = true;
