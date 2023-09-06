@@ -1,8 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 import Form from "@components/Form";
 import React, { useState } from "react";
 
 const CreatePage = () => {
+  const router = useRouter();
   const [isSubmitting, setisSubmitting] = useState(false);
   const [post, setpost] = useState({
     prompt: "",
@@ -13,9 +15,24 @@ const CreatePage = () => {
     e.preventDefault();
     setisSubmitting(true);
     console.log(post);
-    setTimeout(() => {
-      setisSubmitting(false);
-    }, 2000);
+    try {
+      const response = await fetch("/api/prompt/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user?.id,
+          prompt: post.prompt,
+          tag: post.tag,
+        }),
+      });
+
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    setisSubmitting(false);
   }
   return (
     <>
