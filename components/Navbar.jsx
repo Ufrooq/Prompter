@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="sm:flex items-center  hidden">
         {session?.user ? (
           <div className="flex gap-4">
-            <Link href="/createPrompt" className="black_btn">
+            <Link href="/create-post" className="black_btn">
               Create Post
             </Link>
             <button className="outline_btn" onClick={() => signOut()}>
@@ -84,7 +84,7 @@ const Navbar = () => {
           <div className="w-[200px] bg-white absolute top-5 right-3 rounded-md shadow-lg py-5">
             {session?.user ? (
               <div className="flex flex-col justify-center items-center gap-4 py-5">
-                <Link href="/createPrompt" className="black_btn">
+                <Link href="/create-post" className="black_btn">
                   Create Post
                 </Link>
                 <button className="outline_btn" onClick={() => signOut()}>
