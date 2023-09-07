@@ -2,8 +2,10 @@
 import { useRouter } from "next/navigation";
 import Form from "@components/Form";
 import React, { useState } from "react";
+import { useSession } from "next-auth/react";
 
 const CreatePage = () => {
+  const { data: session } = useSession();
   const router = useRouter();
   const [isSubmitting, setisSubmitting] = useState(false);
   const [post, setpost] = useState({
@@ -18,8 +20,11 @@ const CreatePage = () => {
     try {
       const response = await fetch("/api/prompt/new", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          userId: session?.user?.id,
+          creatorEmail: session?.user.email,
           prompt: post.prompt,
           tag: post.tag,
         }),
@@ -31,7 +36,6 @@ const CreatePage = () => {
     } catch (error) {
       console.log(error);
     }
-
     setisSubmitting(false);
   }
   return (
