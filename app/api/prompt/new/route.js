@@ -3,10 +3,10 @@ import { connectdb } from "@utils/dbConnection";
 
 export const POST = async (req) => {
   try {
-    const { creatorEmail, tag, prompt } = await req.json();
+    const { creatorId, tag, prompt } = await req.json();
     await connectdb();
     const newPrompt = await promptsModel.create({
-      creator: creatorEmail,
+      creator: creatorId,
       prompt,
       tag,
     });

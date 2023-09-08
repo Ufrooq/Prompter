@@ -21,7 +21,6 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      {console.log(posts ? posts : null)}
       <form className="w-full flex-center">
         <input
           type="text"
@@ -32,10 +31,15 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <div className="mt-15 prompt_layout">
+      <div className="mt-20 prompt_layout">
         {posts &&
           posts.map((post) => (
-            <PromptCard key={post._id} prompt={post.prompt} tag={post.tag} />
+            <PromptCard
+              key={post._id}
+              prompt={post.prompt}
+              tag={post.tag}
+              creator={post.creator}
+            />
           ))}
       </div>
     </section>

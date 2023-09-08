@@ -1,9 +1,9 @@
 import { Schema, model, models } from "mongoose";
 
 const promptsSchema = new Schema({
-  userId: {
+  creator: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
   },
   prompt: {
     type: String,
@@ -12,9 +12,6 @@ const promptsSchema = new Schema({
   tag: {
     type: String,
     required: [true, "tag is required!"],
-  },
-  image: {
-    type: String,
   },
 });
 

@@ -24,7 +24,7 @@ const CreatePage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          creatorEmail: session?.user.email,
+          creatorId: session?.user?.id,
           prompt: post.prompt,
           tag: post.tag,
         }),

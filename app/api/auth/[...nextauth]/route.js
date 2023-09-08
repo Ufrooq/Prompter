@@ -13,7 +13,7 @@ const authHandler = NextAuth({
   callbacks: {
     async session({ session }) {
       try {
-        connectdb();
+        await connectdb();
         const currentUser = await userModel.findOne({
           email: session.user.email,
         });
@@ -23,14 +23,15 @@ const authHandler = NextAuth({
         console.log(error);
       }
     },
-    async signin({ profile }) {
+    async signIn({ profile }) {
       try {
-        connectdb();
+        await connectdb();
         const userExists = await userModel.findOne({ email: profile.email });
         if (!userExists) {
+          console.log("user not exists");
           await userModel.create({
             email: profile.email,
-            username: profile.username.replace(" ", "").toLowerCase(),
+            username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
           });
         }
