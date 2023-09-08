@@ -4,14 +4,24 @@ import PromptCard from "./PromptCard";
 
 const Feed = () => {
   const [searchText, setsearchText] = useState("");
+  const [posts, setposts] = useState([]);
 
-  const fetchPosts = async (query) => {};
+  const fetchPosts = async (query) => {
+    try {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
+      setposts(data);
+    } catch (error) {
+      console.log("Error has occured -----> ", error);
+    }
+  };
   useEffect(() => {
-    query;
+    fetchPosts("");
   }, []);
 
   return (
     <section className="feed">
+      {console.log(posts ? posts : null)}
       <form className="w-full flex-center">
         <input
           type="text"
@@ -22,8 +32,12 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
-      <PromptCard />
+      <div className="mt-15 prompt_layout">
+        {posts &&
+          posts.map((post) => (
+            <PromptCard key={post._id} prompt={post.prompt} tag={post.tag} />
+          ))}
+      </div>
     </section>
   );
 };
