@@ -8,7 +8,6 @@ const page = () => {
   const [posts, setposts] = useState([]);
   const fetchPosts = async () => {
     try {
-      console.log("redsdr");
       const response = await fetch(`/api/users/${session?.user?.id}/posts`);
       const data = await response.json();
       setposts(data);

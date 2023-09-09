@@ -50,16 +50,22 @@ const PromptCard = ({ prompt, tag, creator, handleEdit, handleDelete }) => {
       >
         {tag}
       </p>
-      {/* {session?.user?.id == creator.id && pathName === "/profile" && ( */}
-      <div className="flex flex-end gap-2 mt-3">
-        <button className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-green-600">
-          Edit
-        </button>
-        <button className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-primary-orange">
-          Delete
-        </button>
-      </div>
-      {/* )} */}
+      {session?.user?.id == creator._id && pathName === "/profile" && (
+        <div className="flex flex-end gap-2 mt-3">
+          <button
+            className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-green-600 transition hover:bg-gray-300"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+          <button
+            className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-primary-orange transition hover:bg-gray-300"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 };
