@@ -1,8 +1,12 @@
 "use client";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
-const PromptCard = ({ prompt, tag, creator }) => {
+const PromptCard = ({ prompt, tag, creator, handleEdit, handleDelete }) => {
+  const { data: session } = useSession();
+  const pathName = usePathname();
   const [copied, setcopied] = useState("");
   function handleCopy() {
     setcopied(true);
@@ -46,6 +50,16 @@ const PromptCard = ({ prompt, tag, creator }) => {
       >
         {tag}
       </p>
+      {/* {session?.user?.id == creator.id && pathName === "/profile" && ( */}
+      <div className="flex flex-end gap-2 mt-3">
+        <button className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-green-600">
+          Edit
+        </button>
+        <button className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-primary-orange">
+          Delete
+        </button>
+      </div>
+      {/* )} */}
     </div>
   );
 };

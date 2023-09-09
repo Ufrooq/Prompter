@@ -8,6 +8,7 @@ const page = () => {
   const [posts, setposts] = useState([]);
   const fetchPosts = async () => {
     try {
+      console.log("redsdr");
       const response = await fetch(`/api/users/${session?.user?.id}/posts`);
       const data = await response.json();
       setposts(data);
@@ -32,15 +33,13 @@ const page = () => {
 
   return (
     <>
-      {posts && posts.length > 0 && (
-        <Profile
-          name="umar farooq"
-          desc="welcome to your persomalized profile "
-          posts={posts}
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
-      )}
+      <Profile
+        name="umar farooq"
+        desc="welcome to your persomalized profile "
+        posts={posts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </>
   );
 };

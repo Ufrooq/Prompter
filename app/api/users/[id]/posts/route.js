@@ -1,7 +1,7 @@
 import promptsModel from "@models/prompt";
 import { connectdb } from "@utils/dbConnection";
 
-export const GET = async ({ params }) => {
+export const GET = async (request, { params }) => {
   console.log("profile data fetc backedn");
   try {
     await connectdb();
@@ -10,7 +10,6 @@ export const GET = async ({ params }) => {
         creator: params.id,
       })
       .populate("creator");
-    console.log(allPrompts);
     return new Response(JSON.stringify(allPrompts), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify("Failed to fetch posts"), {

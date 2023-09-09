@@ -10,7 +10,7 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
       </h1>
       <p className="desc text-left text-sm">{desc}</p>
       <div className="mt-16 prompt_layout">
-        {/* {posts &&
+        {posts &&
           posts.length > 0 &&
           posts.map((post) => (
             <PromptCard
@@ -18,8 +18,10 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
               prompt={post.prompt}
               tag={post.tag}
               creator={post.creator}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
             />
-          ))} */}
+          ))}
       </div>
     </section>
   );
