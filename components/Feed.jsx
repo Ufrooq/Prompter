@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
+import { useSession } from "next-auth/react";
 
 const Feed = () => {
   const [searchText, setsearchText] = useState("");
   const [posts, setposts] = useState([]);
+  const { data: session } = useSession();
 
   const fetchPosts = async (query) => {
     try {
@@ -16,8 +18,10 @@ const Feed = () => {
     }
   };
   useEffect(() => {
-    fetchPosts("");
-  }, []);
+    if (session?.user?.id) {
+      fetchPosts("");
+    }
+  }, [session]);
 
   return (
     <section className="feed">
@@ -27,12 +31,13 @@ const Feed = () => {
           value={searchText}
           required
           placeholder="search for a tag or a prompt"
-          onChange={(e) => e.target.value}
+          onChange={(e) => setsearchText(e.target.value)}
           className="search_input peer"
         />
       </form>
-      <div className="mt-20 prompt_layout">
+      <div className="mt-16 prompt_layout">
         {posts &&
+          posts.length > 0 &&
           posts.map((post) => (
             <PromptCard
               key={post._id}

@@ -39,9 +39,9 @@ const PromptCard = ({ prompt, tag, creator }) => {
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-600">{prompt}</p>
+      <p className="my-3 font-satoshi text-sm text-gray-600">{prompt}</p>
       <p
-        className="font-inter text-sm blue_gradient cursor-pointer"
+        className="font-inter text-sm blue_gradient cursor-pointer inline-block"
         onClick={() => console.log("link clicked")}
       >
         {tag}

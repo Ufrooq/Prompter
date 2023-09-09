@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 const page = () => {
   const { data: session } = useSession();
   const [posts, setposts] = useState([]);
-  const fetchPosts = async (query) => {
+  const fetchPosts = async () => {
     try {
       const response = await fetch(`/api/users/${session?.user?.id}/posts`);
       const data = await response.json();
@@ -25,19 +25,22 @@ const page = () => {
 
   useEffect(() => {
     if (session?.user?.id) {
-      fetchPosts("");
+      fetchPosts();
+      console.log(posts);
     }
-  }, []);
+  }, [session]);
 
   return (
     <>
-      <Profile
-        name="umar farooq"
-        desc="welcome to your persomalized profile "
-        data={[]}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-      />
+      {posts && posts.length > 0 && (
+        <Profile
+          name="umar farooq"
+          desc="welcome to your persomalized profile "
+          posts={posts}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+      )}
     </>
   );
 };
