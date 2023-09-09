@@ -9,10 +9,9 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
         {name}'s <span className="blue_gradient">profile</span>
       </h1>
       <p className="desc text-left text-sm">{desc}</p>
-      <div className="mt-16 prompt_layout">
-        {posts &&
-          posts.length > 0 &&
-          posts.map((post) => (
+      {posts.length > 0 ? (
+        <div className="mt-16 prompt_layout">
+          {posts.map((post) => (
             <PromptCard
               key={post._id}
               postId={post._id}
@@ -23,7 +22,12 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
               handleDelete={handleDelete}
             />
           ))}
-      </div>
+        </div>
+      ) : (
+        <h1 className="no_posts">
+          No <span className="orange_gradient">Posts</span> Available for Now
+        </h1>
+      )}
     </section>
   );
 };

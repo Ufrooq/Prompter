@@ -29,7 +29,7 @@ const EditPrompt = () => {
       });
 
       if (response.ok) {
-        router.push("/");
+        router.replace("/");
       }
     } catch (error) {
       console.log(error);

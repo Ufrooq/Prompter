@@ -21,17 +21,17 @@ const page = () => {
   async function handleEdit(postId) {
     router.push(`/edit-prompt?id=${postId}`);
   }
-  async function handleDelete() {
+  async function handleDelete(postId) {
     const hasConfirmed = confirm("Are you sure you want to delete this post ?");
     if (!hasConfirmed) {
       return;
     }
     try {
-      await fetch(`/api/prompt/${promptId}`, {
+      await fetch(`/api/prompt/${postId.toString()}`, {
         method: "DELETE",
       });
 
-      const filteredPosts = posts.filter((post) => post._id != promptId);
+      const filteredPosts = posts.filter((post) => post._id != postId);
       setposts(filteredPosts);
     } catch (error) {
       console.log(error);
