@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
+const Form = ({ fun, isSubmitting, post, setpost, handleSubmit }) => {
   return (
     <section className="w-full flex-col">
       <h2 className="head_text text-left blue_gradient">{fun} Your Post</h2>
@@ -12,7 +12,7 @@ const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
         for users to share their imagination
       </p>
       <form
-        onSubmit={handleCreate}
+        onSubmit={handleSubmit}
         className="mt-10 w-full flex flex-col flex-start gap-7 glassmorphism"
       >
         <label className="font-satoshi font-semibold text-base text-slate-700">
@@ -39,7 +39,7 @@ const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
           placeholder="write here ..."
           className="p-3 outline-none shadow-md rounded-md"
           onChange={(e) => {
-            setpost({ ...fun, tag: e.target.value });
+            setpost({ ...post, tag: e.target.value });
           }}
           value={post.tag}
         />
@@ -49,7 +49,7 @@ const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
           </Link>
           <button
             type="submit"
-            className="text-sm bg-primary-orange text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-primary-orange hover:border-primary-orange "
+            className="text-sm flex items-center font-inter bg-primary-orange text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-primary-orange hover:border-primary-orange "
           >
             {isSubmitting ? "Submitting..." : fun}
           </button>

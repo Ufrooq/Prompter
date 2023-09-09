@@ -16,7 +16,6 @@ const CreatePage = () => {
   async function handleCreate(e) {
     e.preventDefault();
     setisSubmitting(true);
-    console.log(post);
     try {
       const response = await fetch("/api/prompt/new", {
         method: "POST",
@@ -26,7 +25,7 @@ const CreatePage = () => {
         body: JSON.stringify({
           creatorId: session?.user?.id,
           prompt: post.prompt,
-          tag: post.tag,
+          tag: "#" + post.tag,
         }),
       });
 
@@ -41,11 +40,11 @@ const CreatePage = () => {
   return (
     <>
       <Form
-        fun="create"
+        fun="Create"
         isSubmitting={isSubmitting}
         post={post}
         setpost={setpost}
-        handleCreate={handleCreate}
+        handleSubmit={handleCreate}
       />
     </>
   );

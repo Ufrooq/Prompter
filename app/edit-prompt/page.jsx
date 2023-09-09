@@ -1,10 +1,11 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 import React, { useEffect, useState } from "react";
 
 const EditPrompt = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const promptId = searchParams.get("id");
   const [isSubmitting, setisSubmitting] = useState(false);
   const [post, setpost] = useState({
@@ -12,37 +13,34 @@ const EditPrompt = () => {
     tag: "",
   });
 
-  //   async function handleCreate(e) {
-  //     e.preventDefault();
-  //     setisSubmitting(true);
-  //     console.log(post);
-  //     try {
-  //       const response = await fetch("/api/prompt/new", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           creatorId: session?.user?.id,
-  //           prompt: post.prompt,
-  //           tag: post.tag,
-  //         }),
-  //       });
+  async function handleUpdate(e) {
+    e.preventDefault();
+    setisSubmitting(true);
+    try {
+      const response = await fetch(`/api/prompt/${promptId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          updatedPrompt: post.prompt,
+          updatedTag: "#" + post.tag,
+        }),
+      });
 
-  //       if (response.ok) {
-  //         router.push("/");
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //     setisSubmitting(false);
-  //   }
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setisSubmitting(false);
+  }
 
   async function getPromptDetails() {
     try {
       const response = await fetch(`api/prompt/${promptId}`);
       const data = await response.json();
-      console.log(data);
       setpost({ prompt: data.prompt, tag: data.tag });
     } catch (error) {
       console.log(error);
@@ -55,11 +53,11 @@ const EditPrompt = () => {
   }, [promptId]);
   return (
     <Form
-      fun="update"
+      fun="Update"
       isSubmitting={isSubmitting}
       post={post}
       setpost={setpost}
-      handleCreate={() => {}}
+      handleSubmit={handleUpdate}
     />
   );
 };

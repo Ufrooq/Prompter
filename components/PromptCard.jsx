@@ -60,13 +60,13 @@ const PromptCard = ({
       {session?.user?.id == creator._id && pathName === "/profile" && (
         <div className="flex flex-end gap-2 mt-3">
           <button
-            className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-green-600 transition hover:bg-gray-300"
+            className="text-sm font-inter border border-green-600 px-4 py-1 rounded-full text-green-600 transition hover:bg-green-600 hover:text-white"
             onClick={() => handleEdit && handleEdit(postId)}
           >
             Edit
           </button>
           <button
-            className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-primary-orange transition hover:bg-gray-300"
+            className="text-sm font-inter border border-primary-orange px-4 py-1 rounded-full text-primary-orange transition hover:bg-primary-orange hover:text-white"
             onClick={() => handleDelete && handleDelete(postId)}
           >
             Delete

@@ -37,7 +37,7 @@ export const PATCH = async (request, { params }) => {
     }
     existingPrompt.prompt = updatedPrompt;
     existingPrompt.tag = updatedTag;
-    await existingPrompt.save;
+    await existingPrompt.save();
     return new Response(JSON.stringify(existingPrompt), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify("Failed to update the post"), {
