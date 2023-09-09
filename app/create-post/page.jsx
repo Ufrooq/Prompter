@@ -41,6 +41,7 @@ const CreatePage = () => {
   return (
     <>
       <Form
+        fun="create"
         isSubmitting={isSubmitting}
         post={post}
         setpost={setpost}

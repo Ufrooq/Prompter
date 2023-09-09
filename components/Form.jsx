@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Form = ({ isSubmitting, post, setpost, handleCreate }) => {
+const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
   return (
     <section className="w-full flex-col">
       <h2 className="head_text text-left blue_gradient">Creat Your Post</h2>
@@ -49,7 +49,7 @@ const Form = ({ isSubmitting, post, setpost, handleCreate }) => {
             type="submit"
             className="text-sm bg-primary-orange text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-primary-orange hover:border-primary-orange "
           >
-            {isSubmitting ? "Submitting..." : "Create"}
+            {isSubmitting ? "Submitting..." : fun}
           </button>
         </div>
       </form>
