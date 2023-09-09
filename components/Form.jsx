@@ -6,9 +6,9 @@ import React from "react";
 const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
   return (
     <section className="w-full flex-col">
-      <h2 className="head_text text-left blue_gradient">Creat Your Post</h2>
+      <h2 className="head_text text-left blue_gradient">{fun} Your Post</h2>
       <p className="desc text-left">
-        Create and share amazing AI prompts with the world ! An open plateform
+        {fun} and share amazing AI prompts with the world ! An open plateform
         for users to share their imagination
       </p>
       <form
@@ -22,6 +22,7 @@ const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
           onChange={(e) => {
             setpost({ ...post, prompt: e.target.value });
           }}
+          value={post.prompt}
           placeholder="write here ..."
           cols="50"
           rows="5"
@@ -38,8 +39,9 @@ const Form = ({ fun, isSubmitting, post, setpost, handleCreate }) => {
           placeholder="write here ..."
           className="p-3 outline-none shadow-md rounded-md"
           onChange={(e) => {
-            setpost({ ...post, tag: e.target.value });
+            setpost({ ...fun, tag: e.target.value });
           }}
+          value={post.tag}
         />
         <div className="flex justify-end gap-4">
           <Link href="/" className="outline_btn">

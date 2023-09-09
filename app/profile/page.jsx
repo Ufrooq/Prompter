@@ -1,10 +1,12 @@
 "use client";
 import Profile from "@components/Profile";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const [posts, setposts] = useState([]);
   const fetchPosts = async () => {
     try {
@@ -16,10 +18,11 @@ const page = () => {
     }
   };
 
-  async function handleEdit() {
-    console.log("edited");
+  async function handleEdit(postId) {
+    router.push(`/edit-prompt?id=${postId}`);
   }
   async function handleDelete() {
+    // router.push("delete-prompt");
     console.log("deleted");
   }
 

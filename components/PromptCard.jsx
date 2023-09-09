@@ -1,10 +1,17 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const PromptCard = ({ prompt, tag, creator, handleEdit, handleDelete }) => {
+const PromptCard = ({
+  postId,
+  prompt,
+  tag,
+  creator,
+  handleEdit,
+  handleDelete,
+}) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const [copied, setcopied] = useState("");
@@ -54,13 +61,13 @@ const PromptCard = ({ prompt, tag, creator, handleEdit, handleDelete }) => {
         <div className="flex flex-end gap-2 mt-3">
           <button
             className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-green-600 transition hover:bg-gray-300"
-            onClick={handleEdit}
+            onClick={() => handleEdit && handleEdit(postId)}
           >
             Edit
           </button>
           <button
             className="text-sm font-inter bg-gray-200 px-4 py-1 rounded-lg text-primary-orange transition hover:bg-gray-300"
-            onClick={handleDelete}
+            onClick={() => handleDelete && handleDelete(postId)}
           >
             Delete
           </button>

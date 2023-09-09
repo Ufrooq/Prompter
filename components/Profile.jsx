@@ -15,6 +15,7 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
           posts.map((post) => (
             <PromptCard
               key={post._id}
+              postId={post._id}
               prompt={post.prompt}
               tag={post.tag}
               creator={post.creator}
