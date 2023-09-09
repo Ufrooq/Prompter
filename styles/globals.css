@@ -89,8 +89,8 @@
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
-.no_posts {
-  @apply mt-20 text-center text-5xl font-extrabold leading-[1.15] text-black sm:text-4xl;
+.head_text_small {
+  @apply mt-16 text-center text-3xl font-extrabold leading-[1.15] text-black sm:text-4xl;
 }
 
 .orange_gradient {

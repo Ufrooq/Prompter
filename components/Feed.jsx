@@ -35,7 +35,8 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <div className="mt-16 prompt_layout">
+      <h1 className="head_text_small orange_gradient">All Posts</h1>
+      <div className="mx-8 prompt_layout">
         {posts &&
           posts.length > 0 &&
           posts.map((post) => (
