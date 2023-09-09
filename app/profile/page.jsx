@@ -22,8 +22,20 @@ const page = () => {
     router.push(`/edit-prompt?id=${postId}`);
   }
   async function handleDelete() {
-    // router.push("delete-prompt");
-    console.log("deleted");
+    const hasConfirmed = confirm("Are you sure you want to delete this post ?");
+    if (!hasConfirmed) {
+      return;
+    }
+    try {
+      await fetch(`/api/prompt/${promptId}`, {
+        method: "DELETE",
+      });
+
+      const filteredPosts = posts.filter((post) => post._id != promptId);
+      setposts(filteredPosts);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
