@@ -9,7 +9,7 @@ const Profile = ({ posts, name, desc, handleEdit, handleDelete }) => {
         {name}'s <span className="blue_gradient">profile</span>
       </h1>
       <p className="desc text-left text-sm">{desc}</p>
-      {posts.length > 0 ? (
+      {posts?.length > 0 ? (
         <div className="mt-16 prompt_layout">
           {posts.map((post) => (
             <PromptCard
