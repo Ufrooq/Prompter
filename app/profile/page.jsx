@@ -21,6 +21,7 @@ const page = () => {
   async function handleEdit(postId) {
     router.push(`/edit-prompt?id=${postId}`);
   }
+
   async function handleDelete(postId) {
     const hasConfirmed = confirm("Are you sure you want to delete this post ?");
     if (!hasConfirmed) {

@@ -13,6 +13,7 @@ const PromptCard = ({
   handleDelete,
 }) => {
   const { data: session } = useSession();
+  const router = useRouter();
   const pathName = usePathname();
   const [copied, setcopied] = useState("");
   function handleCopy() {
@@ -22,10 +23,19 @@ const PromptCard = ({
       setcopied("");
     }, 2000);
   }
+
+  function handleNavigate() {
+    if (creator) {
+      router.push(`/profile/${creator._id.toString()}`);
+    }
+  }
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex gap-5 p-2 justify-start items-center cursor-pointer">
+        <div
+          className="flex-1 flex gap-5 p-2 justify-start items-center cursor-pointer"
+          onClick={handleNavigate}
+        >
           <Image
             src={creator.image}
             alt="main-logo"
