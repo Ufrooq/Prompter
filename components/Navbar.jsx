@@ -27,13 +27,6 @@ const Navbar = () => {
   return (
     <nav className="w-full flex justify-between items-center mb-16 pt-4">
       <Link href="/" className="flex items-center gap-4">
-        <Image
-          src="/assets/images/logo.svg"
-          alt="main-logo"
-          width={40}
-          height={40}
-          className="object-contain"
-        />
         <p className="logo_text">Prompter</p>
       </Link>
       {/* desktop navigation --> */}
@@ -76,7 +69,7 @@ const Navbar = () => {
         <FontAwesomeIcon
           width={"20px"}
           fontSize={"18px"}
-          className="text-[#ff5722] cursor-pointer"
+          className="text-blue-500 cursor-pointer"
           icon={faEllipsisVertical}
           onClick={() => setToggle((prev) => !prev)}
         />

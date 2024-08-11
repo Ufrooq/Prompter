@@ -49,7 +49,7 @@ const Form = ({ fun, isSubmitting, post, setpost, handleSubmit }) => {
           </Link>
           <button
             type="submit"
-            className="text-sm flex items-center font-inter bg-primary-orange text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-primary-orange hover:border-primary-orange "
+            className="text-sm flex items-center font-inter bg-blue-600 text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-blue-600 hover:border-blue-600 "
           >
             {isSubmitting ? "Submitting..." : fun}
           </button>

@@ -51,13 +51,24 @@ const PromptCard = ({
           </div>
         </div>
         <div className="copy_btn" onClick={() => handleCopy()}>
-          <Image
-            alt="main-logo"
-            src={copied ? "/assets/icons/tick.svg" : "/assets/icons/copy.svg"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
             width={20}
             height={20}
-            className="bg-gray-200 rounded-xl"
-          />
+          >
+            {copied ? (
+              <path
+                fill="#e70d0d"
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+              />
+            ) : (
+              <path
+                fill="#246ef0"
+                d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"
+              />
+            )}
+          </svg>
         </div>
       </div>
       <p className="my-3 font-satoshi text-sm text-gray-600">{prompt}</p>
@@ -76,7 +87,7 @@ const PromptCard = ({
             Edit
           </button>
           <button
-            className="text-sm font-inter border border-primary-orange px-4 py-1 rounded-full text-primary-orange transition hover:bg-primary-orange hover:text-white"
+            className="text-sm font-inter border border-red-600 px-4 py-1 rounded-full text-red-600 transition hover:bg-red-600 hover:text-white"
             onClick={() => handleDelete && handleDelete(postId)}
           >
             Delete
