@@ -2,21 +2,27 @@
 import React, { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 import { useSession } from "next-auth/react";
+import Loader from "./Loader";
 
 const Feed = () => {
   const [searchText, setsearchText] = useState("");
-  const [posts, setposts] = useState([]);
+  const [posts, setposts] = useState(null);
   const { data: session } = useSession();
 
-  const fetchPosts = async (query) => {
+  let filteredPosts = posts?.filter((post) => {
+    return post.prompt.toLowerCase().includes(searchText);
+  });
+  const fetchPosts = async () => {
     try {
       const response = await fetch("/api/prompt");
       const data = await response.json();
       setposts(data);
     } catch (error) {
+      setposts([]);
       console.log("Error has occured -----> ", error);
     }
   };
+
   useEffect(() => {
     if (session?.user?.id) {
       fetchPosts("");
@@ -35,19 +41,35 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <h1 className="head_text_small orange_gradient">All Posts</h1>
-      <div className="mx-8 prompt_layout">
-        {posts &&
-          posts.length > 0 &&
-          posts.map((post) => (
-            <PromptCard
-              key={post._id}
-              prompt={post.prompt}
-              tag={post.tag}
-              creator={post.creator}
-            />
-          ))}
-      </div>
+      <>
+        {filteredPosts?.length > 0 ? (
+          <>
+            <h1 className="head_text_small orange_gradient">All Posts</h1>
+            <div className="mx-8 prompt_layout">
+              {posts.map((post) => (
+                <PromptCard
+                  key={post._id}
+                  prompt={post.prompt}
+                  tag={post.tag}
+                  creator={post.creator}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            {!posts == null || !filteredPosts?.length > 0 ? (
+              <h1 className="head_text_small orange_gradient">
+                No Posts Found !
+              </h1>
+            ) : (
+              <div className="w-16 h-16 mt-16">
+                <Loader size={"10"} />
+              </div>
+            )}
+          </>
+        )}
+      </>
     </section>
   );
 };

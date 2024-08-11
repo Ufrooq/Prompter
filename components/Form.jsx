@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import Loader from "./Loader";
 
 const Form = ({ fun, isSubmitting, post, setpost, handleSubmit }) => {
   return (
@@ -49,9 +50,9 @@ const Form = ({ fun, isSubmitting, post, setpost, handleSubmit }) => {
           </Link>
           <button
             type="submit"
-            className="text-sm flex items-center font-inter bg-blue-600 text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-blue-600 hover:border-blue-600 "
+            className="text-sm mx-auto flex items-center font-inter bg-blue-600 text-white px-5 py-2 rounded-full border border-transparent transition hover:bg-transparent hover:text-blue-600 hover:border-blue-600 "
           >
-            {isSubmitting ? "Submitting..." : fun}
+            {isSubmitting ? <Loader size={4} /> : "Create"}
           </button>
         </div>
       </form>

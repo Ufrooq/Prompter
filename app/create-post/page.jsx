@@ -25,7 +25,7 @@ const CreatePage = () => {
         body: JSON.stringify({
           creatorId: session?.user?.id,
           prompt: post.prompt,
-          tag: "#" + post.tag,
+          tag: post.tag,
         }),
       });
 

@@ -76,7 +76,7 @@ const PromptCard = ({
         className="font-inter text-sm blue_gradient cursor-pointer inline-block"
         onClick={() => console.log("link clicked")}
       >
-        {tag}
+        {`#${tag}`}
       </p>
       {session?.user?.id == creator._id && pathName === "/profile" && (
         <div className="flex flex-end gap-2 mt-3">

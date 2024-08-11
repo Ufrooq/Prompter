@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@components/Loader";
 import Profile from "@components/Profile";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -48,13 +49,19 @@ const page = () => {
 
   return (
     <>
-      <Profile
-        name={session?.user?.name}
-        desc="welcome to your persomalized profile "
-        posts={posts}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-      />
+      {session?.user ? (
+        <Profile
+          name={session?.user?.name}
+          desc="welcome to your persomalized profile "
+          posts={posts}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+      ) : (
+        <div className="w-20 h-20">
+          <Loader size={"16"} />
+        </div>
+      )}
     </>
   );
 };
